@@ -1,0 +1,207 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Ninestars Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <img src="~/contentuser/~/contentuser/assets/img/favicon.png" />
+    <!-- Favicons -->
+    <link href="~/contentuser/assets/img/favicon.png" rel="icon">
+    <link href="~/contentuser/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/contentuser/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/contentuser/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/contentuser/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/contentuser/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/contentuser/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/contentuser/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/contentuser/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Ninestars - v4.9.1
+    * Template URL: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+   
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1 class="text-light">
+                    <a href="~/Home/Index"><span><img src="img/logo.png" class="logo" /></span></a>
+                </h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!--  <a href="index.html"><img src="~/contentuser/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="~/Home/Index">Trang Chủ</a></li>
+                   
+                    <li><a class="nav-link scrollto active" href="~/Login/Index">Đăng Nhập</a></li>
+
+                 
+                           
+                  
+                    <li>
+                       
+                            <div class="cart">
+                            @using ShopBanHangHS.Help
+                            @{
+                           
+                                var data = Context.Session.Get<List<CartItem>>("GioHang");
+                                if (data == null)
+                                {
+                                    data = new List<CartItem>();
+
+                                }
+                               
+                                   if (data == null || data.Count == 0)
+                                   {
+                                    <a href="@Url.Action("Index","GioHang")"><span class="fa fa-shopping-cart  "><span class="badge badge-notify my-cart-badge">0</span></span></a>
+                                   }
+                                  else
+                                   {
+                                    <a href="@Url.Action("Index","GioHang")"><span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge">@(data.Sum(a => a.SoLuong))</span></span></a>
+                                   }
+                                   }  
+                                
+                            </div>
+                        <div class="clearfix"></div>
+                     </li>
+                    
+
+                </ul>
+                
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+
+
+    <main id="main">
+        <div class="container">
+            @RenderBody()
+        </div>
+
+
+
+
+        <!-- ======= Team Section ======= -->
+
+
+
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Liên Hệ</h3>
+                        <p>
+                            Địa Chỉ :101/69/9A Đường Đông Thạnh 7,Ấp 4 ,Xã Đông Thạnh ,Huyện Hóc Môn ,TP HCM <br>
+
+                            <strong>Số Điện Thoại:</strong> 0948262748 - Mr Tâm<br>
+
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Thông Tin Trang</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="~/Home">Trang Chủ</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="~/GioiThieu">Giới Thiệu</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="~/LienHe">Liên Hệ</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a href="~/BaoGia">Báo Giá</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Zalo</h4>
+
+
+
+                        <a href="https://zalo.me/0948262748">
+                            <div class="img-inner dark">
+                                <img style="height:100px;width:120px" src="~/contentUser/assets/img/zalo.jpg" />
+                            </div>
+                        </a>
+
+
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Kết Nối Với Chúng Tôi</h4>
+
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-4">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Ninestars</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/contentuser/assets/vendor/aos/aos.js"></script>
+    <script src="~/contentuser/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/contentuser/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/contentuser/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/contentuser/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/contentuser/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/contentuser/assets/js/main.js"></script>
+    @RenderSection("scripts",required:false)
+</body>
+
+</html>

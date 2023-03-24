@@ -1,0 +1,96 @@
+﻿@model IEnumerable<CartItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @using ShopBanHangHS.Help
+    @{
+        var data = Context.Session.Get<List<CartItem>>("GioHang");
+        if (data == null)
+        {
+            data = new List<CartItem>();
+
+        }
+    }
+    @if (data == null || data.Count==0 )
+    {
+        <div class="spec ">
+            <h3>Giỏ hàng</h3>
+            <div class="ser-t">
+                <b></b>
+                <span><i></i></span>
+                <b class="line"></b>
+            </div>
+        </div>
+        <p class="text-info text-center" style="font-size:25px;">
+            Giỏ hàng của bạn trống!
+        </p>
+    }
+    
+    else
+    {
+        <div class="spec ">
+            <h3>Giỏ hàng</h3>
+            @{
+               // List<ShopBanHangHS.Models.CartItem> tem = (List<ShopBanHangHS.Models.CartItem>)ISession["GioHang"];
+            }
+            <div class="ser-t">
+                <b></b>
+                <span><i></i></span>
+                <b class="line"></b>
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Hình</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center"><img src="@item.Hinh" width="70" height="60" /> </td>
+                                <td><a target="_blank" href="@Url.Action("ChiTiet", "ChiTietSanPham", new { id = item.SanPhamID })" style="font-size:medium;"> @item.TenSanPham </a> </td>
+                                <td>
+                                    <form id="formSoluong_" action="@Url.Action("SuaSoLuong","GioHang")" method="get">
+                                        <input type="hidden" name="SanPhamID" value="@item.SanPhamID" />
+                                        <input class="col-lg-4" style="height:30px;" type="number" min="1" step="1" name="soluongmoi" value="@item.SoLuong" onchange="$('#formSoluong_d').submit();" />
+
+                                    </form>
+                                </td>
+                                <td> @((item.DonGia).ToString("#,##0")) VNĐ </td>
+                                <td> @((item.ThanhTien).ToString("#,##0")) VNĐ </td>
+
+                                <td> <a href="@Url.Action("XoaGioHang",new {id = item.SanPhamID})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>
+                             
+                            </tr>
+                          //  i++;
+                        //    total += @item.ThanhTien;
+
+                        }
+                        <tr>
+                            <td></td>
+                            <td class="text-right"></td>
+                            <td></td>
+                            <td class="text-right">Tổng thành tiền:</td>
+                        @* <td style="font-size:large;">@total.ToString("#,##0") VNĐ </td>*@
+                            <td><a href="@Url.Action("Index", "ThanhToan")" role="button" class="btn btn-success">Thanh toán</a></td>
+                          
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+       
+    }
+</div>

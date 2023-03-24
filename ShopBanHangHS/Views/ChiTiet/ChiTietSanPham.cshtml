@@ -1,0 +1,115 @@
+﻿@model ShopBanHangHS.Models.SanPham
+@{
+    ViewData["Title"] = "Chi Tiết Sản Phẩm ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+</script>
+<main id="main">
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Chi Tiết Sản Phẩm</h2>
+                <ol>
+                    <li>Portfolio Details</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- Breadcrumbs Section -->
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                        <div class="swiper-wrapper align-items-center">
+
+                            <div class="swiper-slide">
+                                <img src="@Model.HinhAnh" alt="">
+                            </div>
+                            @*
+                            <div class="swiper-slide">
+                            <img src="~/contentuser/assets/img/portfolio/portfolio-2.jpg" alt="">
+                            </div>
+
+                            <div class="swiper-slide">
+                            <img src="~/contentuser/assets/img/portfolio/portfolio-3.jpg" alt="">
+                            </div>
+                            *@
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+
+                        <h3>Thông Tin Chi Tiết </h3>
+                        <form asp-action="ThemGH" asp-controller="GioHang" asp-route-id="@Model.maSanPham">
+                        <ul>
+                            <li>
+                                <strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                    </svg> Tên Sản Phẩm
+                                </strong>: @Model.tenSanPham
+                            </li>
+                            <li>
+                                <strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box" viewBox="0 0 16 16">
+                                        <path d="M8.186 1.113a.5.5 0 0
+                                 0-.372
+                                    0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                                    </svg> Giá
+                                </strong>: @Model.Gia VND;
+                            </li>
+                            <li>
+                                <strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                        <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
+                                    </svg> Số Lượng
+                                    </strong>: <input type="number" id="quantity" name="soLuong" min="1" max="auto" value="1">
+                            </li>
+                            <li>
+                                <strong>
+                                   
+                                    <p>
+                                            <button type="submit"  style="height:59px;width:auto" onclick="confirm('Đã Thêm Thành Công Sản Phẩm Vào Giõ?');">
+                                              
+                                            <span class="glyphicon glyphicon-shopping-cart" style="color:green">
+                                            </span>
+                                           
+                                            <b> Thêm vào giỏ hàng </b>
+                                        </button>
+                                    </p>
+
+                                </strong>
+                            </li>
+                        </ul>
+                        </form>
+                    </div>
+              
+                    <div class="portfolio-description">
+                        <h2>Thông tin Mô Tả</h2>
+                        <p>
+                            @Model.moTa
+                        </p>
+                    </div>
+                </div>
+                   
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+  
+</main><!-- End #main -->
