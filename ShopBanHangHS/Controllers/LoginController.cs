@@ -57,11 +57,16 @@ namespace ShopBanHangHS.Controllers
                 if (check.xacThucEmail == true)
                 {
                     kiemtra.Add(check);
+                   
                     if (check.quyen == true)
                     {
                         kiemtra.Add(check);
+                      
                         return Redirect("/Admin/HomeAdmin/Index");
+                       
                     }
+                    HttpContext.Session.Set("Tk", kiemtra);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -71,7 +76,7 @@ namespace ShopBanHangHS.Controllers
                
                
             }
-            HttpContext.Session.Set("Tk", kiemtra);
+           
             return View();
           
 
@@ -150,12 +155,10 @@ namespace ShopBanHangHS.Controllers
         public void SendVerificationLinkEmail(string emailID, string activationCode)
         {
            var verifyUrl = Request.Scheme+"://"+ Request.Host+"/Login/VerifyAccount/" + activationCode;
-           
-          
 
-            var fromEmail = new MailAddress("namchibi18@gmail.com", "ShopVP");
+            var fromEmail = new MailAddress("phuongnama121999@gmail.com", "ShopVP");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "czfjjeramvamkpog";
+            var fromEmailPassword = "stimrgvviqxqgxyq";
             string subject = "Your account is successfully created!";
 
             string body = "<br/><br/>Cảm ơn quý khách đã đăng kí tài khoản " +

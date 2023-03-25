@@ -57,11 +57,20 @@ namespace ShopBanHangHS.Migrations
                     b.Property<string>("ghiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("maSanPham")
+                        .HasColumnType("int");
+
                     b.Property<int?>("maTaiKhoan")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ngayMuaHang")
                         .HasColumnType("datetime2");
+
+                    b.Property<double>("thanhTien")
+                        .HasColumnType("float");
+
+                    b.Property<string>("trangThai")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("maHoaDon");
 

@@ -32,7 +32,10 @@ namespace ShopBanHangHS.Migrations
                     ghiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SoDienThoai = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     diaChi = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    trangThai = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    maSanPham = table.Column<int>(type: "int", nullable: false),
+                    thanhTien = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

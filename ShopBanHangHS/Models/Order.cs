@@ -16,5 +16,8 @@ namespace ShopBanHangHS.Models
         public string SoDienThoai { get; set; }
         public string diaChi { get; set; }
         public string Email { get; set; }
+        public string trangThai { get; set; }
+        public int maSanPham { get; set; }
+        public double thanhTien { get; set; }
     }
 }

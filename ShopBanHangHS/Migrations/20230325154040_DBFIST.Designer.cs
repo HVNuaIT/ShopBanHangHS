@@ -10,7 +10,7 @@ using ShopBanHangHS.Data;
 namespace ShopBanHangHS.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20230324174317_DBFIST")]
+    [Migration("20230325154040_DBFIST")]
     partial class DBFIST
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,11 +59,20 @@ namespace ShopBanHangHS.Migrations
                     b.Property<string>("ghiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("maSanPham")
+                        .HasColumnType("int");
+
                     b.Property<int?>("maTaiKhoan")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ngayMuaHang")
                         .HasColumnType("datetime2");
+
+                    b.Property<double>("thanhTien")
+                        .HasColumnType("float");
+
+                    b.Property<string>("trangThai")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("maHoaDon");
 
