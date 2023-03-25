@@ -37,22 +37,14 @@ namespace ShopBanHangHS.Controllers
         {
             var giohang = Carts;
             var checkgio = giohang.FirstOrDefault();
-            if (checkgio == null)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                var order = db.Orders.Where(x => x.SanPham.maSanPham == checkgio.SanPhamID);
-             
-                if (order !=null)
-                {
-                    Order item = new Order();
-                    item.SanPham.maSanPham=checkgio.SanPhamID;
-              
-
-                }
-            }
+          
+            return View("Index");
+        }
+        public IActionResult VNPAY()
+        {
+            var giohang = Carts;
+            var checkgio = giohang.FirstOrDefault();
+           
 
             return View("Index");
         }

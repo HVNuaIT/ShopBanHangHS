@@ -10,7 +10,7 @@ using ShopBanHangHS.Data;
 namespace ShopBanHangHS.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20230324113707_DBFIST")]
+    [Migration("20230324174317_DBFIST")]
     partial class DBFIST
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,31 +39,33 @@ namespace ShopBanHangHS.Migrations
 
             modelBuilder.Entity("ShopBanHangHS.Models.Order", b =>
                 {
-                    b.Property<int>("maDatHang")
+                    b.Property<int>("maHoaDon")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("LoiNhan")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SanPhammaSanPham")
+                    b.Property<string>("SoDienThoai")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenKhach")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("diaChi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ghiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("maTaiKhoan")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsermaTaiKhoan")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("ngayMuaHang")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("diaChiGH")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("trangThai")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("maDatHang");
-
-                    b.HasIndex("SanPhammaSanPham");
-
-                    b.HasIndex("UsermaTaiKhoan");
+                    b.HasKey("maHoaDon");
 
                     b.ToTable("Order");
                 });
@@ -160,21 +162,6 @@ namespace ShopBanHangHS.Migrations
                     b.HasKey("maTaiKhoan");
 
                     b.ToTable("TaiKhoan");
-                });
-
-            modelBuilder.Entity("ShopBanHangHS.Models.Order", b =>
-                {
-                    b.HasOne("ShopBanHangHS.Models.SanPham", "SanPham")
-                        .WithMany()
-                        .HasForeignKey("SanPhammaSanPham");
-
-                    b.HasOne("ShopBanHangHS.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UsermaTaiKhoan");
-
-                    b.Navigation("SanPham");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShopBanHangHS.Models.SanPham", b =>

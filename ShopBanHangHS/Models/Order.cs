@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopBanHangHS.Models
@@ -7,12 +8,13 @@ namespace ShopBanHangHS.Models
     public class Order
     {
         [Key]
-        public int maDatHang { get; set; }
-        public User User { get; set; }
-        public string diaChiGH { get; set; }  
-        public string LoiNhan { get; set; }
-     
-        public SanPham SanPham { get; set; }
-        public string trangThai { get; set; }
+        public int maHoaDon { get; set; }
+        public Nullable<int> maTaiKhoan { get; set; }
+        public string TenKhach { get; set; }
+        public Nullable<System.DateTime> ngayMuaHang { get; set; }
+        public string ghiChu { get; set; }
+        public string SoDienThoai { get; set; }
+        public string diaChi { get; set; }
+        public string Email { get; set; }
     }
 }

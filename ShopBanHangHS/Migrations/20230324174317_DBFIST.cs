@@ -21,6 +21,25 @@ namespace ShopBanHangHS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    maHoaDon = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    maTaiKhoan = table.Column<int>(type: "int", nullable: true),
+                    TenKhach = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ngayMuaHang = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ghiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SoDienThoai = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    diaChi = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.maHoaDon);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Quyen",
                 columns: table => new
                 {
@@ -76,45 +95,6 @@ namespace ShopBanHangHS.Migrations
                         principalColumn: "maDanhMuc",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    maDatHang = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UsermaTaiKhoan = table.Column<int>(type: "int", nullable: true),
-                    diaChiGH = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LoiNhan = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SanPhammaSanPham = table.Column<int>(type: "int", nullable: true),
-                    trangThai = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.maDatHang);
-                    table.ForeignKey(
-                        name: "FK_Order_SanPham_SanPhammaSanPham",
-                        column: x => x.SanPhammaSanPham,
-                        principalTable: "SanPham",
-                        principalColumn: "maSanPham",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Order_TaiKhoan_UsermaTaiKhoan",
-                        column: x => x.UsermaTaiKhoan,
-                        principalTable: "TaiKhoan",
-                        principalColumn: "maTaiKhoan",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Order_SanPhammaSanPham",
-                table: "Order",
-                column: "SanPhammaSanPham");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Order_UsermaTaiKhoan",
-                table: "Order",
-                column: "UsermaTaiKhoan");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SanPham_danhmucmaDanhMuc",
