@@ -1,5 +1,7 @@
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShopBanHangHS.Data;
 using ShopBanHangHS.Help;
+using Microsoft.AspNetCore.HttpOverrides;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShopBanHangHS.Models;
 
 namespace ShopBanHangHS
 {
@@ -32,8 +36,7 @@ namespace ShopBanHangHS
             services.AddDbContext<ShopContext>(oo => oo.UseSqlServer(Configuration.GetConnectionString("Db")));
             services.AddSession();
 
-           
-   
+
 
         }
 
@@ -54,6 +57,8 @@ namespace ShopBanHangHS
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
+
+           
 
             app.UseAuthorization();
 

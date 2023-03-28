@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopBanHangHS.Models
 {
-    [Table("Order")]
+    [Table("DatHang")]
     public class Order
     {
         [Key]
@@ -19,5 +19,6 @@ namespace ShopBanHangHS.Models
         public string trangThai { get; set; }
         public int maSanPham { get; set; }
         public double thanhTien { get; set; }
+        public int soluong { get; set; }
     }
 }

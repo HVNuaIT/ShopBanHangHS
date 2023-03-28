@@ -3,7 +3,9 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="container">
     @if (Model == null || Model.Count == 0)
     {
@@ -21,8 +23,6 @@
     }
     else
     {
-
-
         <div class="spec ">
             <h3>Thanh toán</h3>
             <div class="ser-t">
@@ -31,43 +31,18 @@
                 <b class="line"></b>
             </div>
         </div>
-    
-
         <div class="row">
-            <div id="center_column" class="center_column">
+            <div  class="center_column">
                 <div class="row">
                     <div id="left_column" class="column col-sm-12 col-md-12">
                         <form class="form-horizontal" action="/ThanhToan/COD" method="post">
                             <div class="col-sm-6 col-md-6">
                                 <div class="detail_ct">
-                                    @using (Html.BeginForm("COD", "ThanhToan", FormMethod.Post))
-                                    {
-                                        <legend>Thông tin liên hệ</legend>
-                                        /*
-                                        <div class="form-group">
-                                            <label class="col-lg-4 control-label">Họ và tên *</label>
-                                            <div class="col-lg-8">
-                                                <input type="text" required name="fullname" name="ten" class="form-control input-sm field"  style="width:300px; "  >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-4 control-label">Email</label>
-                                            <div class="col-lg-8">
-                                                <input type="email" required placeholder="Không bắt buộc" class="form-control input-sm field" name="email" style="width:300px;" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-4 control-label">Số điện thoại *</label>
-                                            <div class="col-lg-8">
-                                                <input type="text" required class="form-control input-sm field" id="phone" name="phone" style="width:300px;" >
-                                            </div>
-                                        </div>*/
                                         <legend>Địa chỉ giao hàng</legend>
                                         <div class="form-group">
                                             <label class="col-lg-4 control-label">Địa chỉ</label>
                                             <div class="col-lg-8">
                                                 <textarea required class="form-control input-sm field" placeholder="Vui lòng ghi địa chỉ chi tiết..." name="address" rows="5" style="height:50px;"></textarea>
-
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -80,15 +55,17 @@
                                             <div class="form-group">
                                                 <label class="col-lg-4 control-label"></label>
                                                 <div class="col-lg-8">
-                                                    <input type="submit" style="width:auto;" name="submit_step1" class="btn btn-danger btn-buynow" value="Gửi đơn hàng">
+                                                    <input type="submit" style="width:auto;" name="submit_step1" class="btn btn-danger btn-buynow" value="Thanh Toán Trực Tuyến...">
                                                 </div>
                                             </div>
-                                        </fieldset>
-                                    }
-                                </div>
-
-                            </div> <div class="col-sm-6 col-md-6">
-                                <div class="detail_ct" style="height:auto; min-height:inherit;">
+                                        </fieldset>                                   
+                                </div>  
+                            </div> 
+                            </form>
+                        <form class="form-horizontal">
+                            <div class="col-sm-6 col-md-6" >
+                              
+                                <div class="detail_ct" style="height:auto; min-height:inherit;right:auto">
                                     <legend>Giỏ hàng của bạn</legend>
 
                                     @using ShopBanHangHS.Help
@@ -98,8 +75,6 @@
                                         {
                                             data = new List<CartItem>();
                                         }
-
-
                                         <table class="table" style="background:#FFF; font-size:18px;left:70px;right:140px">
                                             <thead>
                                                 <tr>
@@ -156,16 +131,13 @@
                                                 </tr>
                                             </tbody>
 
-                                            <a class="btn btn-primary" href="@Url.Action("Payment","ThanhToan")">Thanh toán bằng VNPAY</a>
-
+                                            <a class="btn btn-primary" style="width:auto;" href="@Url.Action("VNPAY","ThanhToan")">Thanh toán bằng VNPAY</a>
+                                            
                                         </table>
                                     </fieldset>
                                 </div>
                             </div> <div class="clr"></div>
                         </form>
-
-
-
                     </div>
                 </div>
             </div>

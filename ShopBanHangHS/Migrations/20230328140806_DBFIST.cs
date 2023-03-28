@@ -21,7 +21,7 @@ namespace ShopBanHangHS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
+                name: "DatHang",
                 columns: table => new
                 {
                     maHoaDon = table.Column<int>(type: "int", nullable: false)
@@ -35,11 +35,12 @@ namespace ShopBanHangHS.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     trangThai = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     maSanPham = table.Column<int>(type: "int", nullable: false),
-                    thanhTien = table.Column<double>(type: "float", nullable: false)
+                    thanhTien = table.Column<double>(type: "float", nullable: false),
+                    soluong = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order", x => x.maHoaDon);
+                    table.PrimaryKey("PK_DatHang", x => x.maHoaDon);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,7 +109,7 @@ namespace ShopBanHangHS.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "DatHang");
 
             migrationBuilder.DropTable(
                 name: "Quyen");

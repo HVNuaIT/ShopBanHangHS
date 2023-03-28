@@ -66,6 +66,9 @@ namespace ShopBanHangHS.Migrations
                     b.Property<DateTime?>("ngayMuaHang")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("soluong")
+                        .HasColumnType("int");
+
                     b.Property<double>("thanhTien")
                         .HasColumnType("float");
 
@@ -74,7 +77,7 @@ namespace ShopBanHangHS.Migrations
 
                     b.HasKey("maHoaDon");
 
-                    b.ToTable("Order");
+                    b.ToTable("DatHang");
                 });
 
             modelBuilder.Entity("ShopBanHangHS.Models.Quyen", b =>
