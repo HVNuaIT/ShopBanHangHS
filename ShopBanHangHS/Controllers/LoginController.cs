@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Linq;
 using ShopBanHangHS.Data;
 using ShopBanHangHS.Help;
 using ShopBanHangHS.Models;
@@ -13,9 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace ShopBanHangHS.Controllers
@@ -52,6 +45,7 @@ namespace ShopBanHangHS.Controllers
             var kiemtra = Userss;
             var checkUs = kiemtra.SingleOrDefault(p => p.maTaiKhoan == user.maTaiKhoan);
             var check = db.Users.SingleOrDefault(s => s.Email == user.Email);
+          
             if (check != null || !BCryptNet.Verify(user.matKhau, check.matKhau))
             {
                 if (check.xacThucEmail == true)
@@ -66,21 +60,15 @@ namespace ShopBanHangHS.Controllers
                        
                     }
                     HttpContext.Session.Set("Tk", kiemtra);
-
+                   HttpContext.Session.SetString("Ten",kiemtra.FirstOrDefault().ten);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     return View("Loi");
-                }
-               
-               
+                } 
             }
-           
             return View();
-          
-
-          
         }
 
         public IActionResult DangKi()

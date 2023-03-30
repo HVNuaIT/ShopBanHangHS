@@ -23,11 +23,8 @@ namespace ShopBanHangHS.Controllers
             _logger = logger;
             db=_db;
         }
-   
-
         public IActionResult Index()
         {
-          
             var checkSanPham = db.SanPhams.ToList();
             var checkdanhmuc = db.DanhMucs.ToList();
             DanhSach ds  = new DanhSach();

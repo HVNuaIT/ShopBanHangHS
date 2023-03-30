@@ -6,7 +6,7 @@ namespace ShopBanHangHS.Data
 {
     public class ShopContext:DbContext
     {
-        public ShopContext(DbContextOptions options) : base(options) { }
+        public ShopContext(DbContextOptions<ShopContext> options) : base(options) { }
 
        public   DbSet<SanPham> SanPhams { get; set; }
         public DbSet<DanhMuc> DanhMucs { get; set; }

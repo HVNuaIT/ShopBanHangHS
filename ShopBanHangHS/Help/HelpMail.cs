@@ -1,7 +1,4 @@
-﻿
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Security.Application;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using System.Net;

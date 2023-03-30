@@ -10,12 +10,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShopBanHangHS.Data;
 using ShopBanHangHS.Help;
-using Microsoft.AspNetCore.HttpOverrides;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShopBanHangHS.Models;
+using ShopBanHangHS.Areas.Admin.Data;
+using System.Diagnostics;
 
 namespace ShopBanHangHS
 {
@@ -32,10 +33,10 @@ namespace ShopBanHangHS
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             services.AddDbContext<ShopContext>(oo => oo.UseSqlServer(Configuration.GetConnectionString("Db")));
+            services.AddDbContext<DBContextAdmin>(oo => oo.UseSqlServer(Configuration.GetConnectionString("Db")));
             services.AddSession();
-
+            services.AddRazorPages();
 
 
         }
@@ -57,11 +58,13 @@ namespace ShopBanHangHS
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
-
-           
-
             app.UseAuthorization();
 
+           
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

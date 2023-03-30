@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ShopBanHangHS.Areas.Admin.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p class="btn btn-outline-success">
+    <a href="/Admin/SanPhamAdmin/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tenSanPham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HinhAnh)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.moTa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuong)
+            </td>
+            <td>
+              <img @Html.DisplayFor(modelItem => item.HinhAnh)>
+            </td>
+                <td>
+                 
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moTa)
+            </td>
+            <td class="btn btn-group">
+                    <a asp-action="Edit" class="btn btn-secondary" asp-controller="SanPhamAdmin" asp-route-id="@item.maSanPham">Edit</a> |
+                    <a asp-action="Details" class="btn btn-secondary" asp-controller="SanPhamAdmin" asp-route-id="@item.maSanPham">Details</a> |
+                    <a asp-action="Delete" class="btn btn-secondary" asp-controller="SanPhamAdmin" asp-route-id="@item.maSanPham">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

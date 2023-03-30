@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    @using ShopBanHangHS.Help
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -67,8 +71,6 @@
                               
                                 <div class="detail_ct" style="height:auto; min-height:inherit;right:auto">
                                     <legend>Giỏ hàng của bạn</legend>
-
-                                    @using ShopBanHangHS.Help
                                     @{
                                         var data = Context.Session.Get<List<CartItem>>("GioHang");
                                         if (data == null)

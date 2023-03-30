@@ -61,10 +61,7 @@ namespace ShopBanHangHS.Controllers
         }
         public IActionResult Index()
         {
-                
-
-            return View(Carts);
-            
+                return View(Carts); 
         }
         [HttpPost]
         public IActionResult COD( string address,string note)
@@ -72,7 +69,7 @@ namespace ShopBanHangHS.Controllers
             var giohang = Carts;
             var checkgio = giohang.FirstOrDefault();
             var use = Userss;
-            var checkUs = use.FirstOrDefault();
+            var checkUs = use.FirstOrDefault(); 
             Models.Order order = new Models.Order();
             order.ngayMuaHang = DateTime.Now;
             order.ghiChu = note;
@@ -90,15 +87,17 @@ namespace ShopBanHangHS.Controllers
             checksp.soLuong -= order.soluong;
             db.SaveChanges();          
             HttpContext.Session.Remove("GioHang");
-            return View("Index");
+        
+            return  RedirectToAction("ThanhToanTC","ThanhToan");
         }
-      public IActionResult ThanhToanTC()
+        public IActionResult ThanhToanTC()
         {
             return View();
         }
       
         public IActionResult VNPAY()
         {
+            
             DateTime utcDateTime = DateTime.UtcNow;
             string vnTimeZoneKey = "SE Asia Standard Time";
             TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById(vnTimeZoneKey);
@@ -177,8 +176,10 @@ namespace ShopBanHangHS.Controllers
                         db.Entry(ma).State = EntityState.Modified; //THAY DOI TRNAG THAI SO LUONG CUA SAN PHAM
                         db.Orders.Add(newOrder);
                         db.SaveChanges();
-                        giohang.Clear();
-                        ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId + " | Mã giao dịch: " + vnpayTranId;
+                        HttpContext.Session.Remove("GioHang");
+                        //ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId + " | Mã giao dịch: " + vnpayTranId;
+                        ViewBag.Message = "Thanh Toán Thành Công Đơn Hàng Bằng VNPAY ";
+                    
                     }
                     else
                     {

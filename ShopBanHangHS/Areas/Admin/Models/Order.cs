@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ShopBanHangHS.Models
+namespace ShopBanHangHS.Areas.Admin.Models
 {
     [Table("DatHang")]
     public class Order

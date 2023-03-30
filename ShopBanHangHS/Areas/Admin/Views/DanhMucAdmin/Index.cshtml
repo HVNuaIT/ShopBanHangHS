@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ShopBanHangHS.Areas.Admin.Models.DanhMuc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p class="btn btn-warning">
+    <a href="/Admin/DanhMucAdmin/Create">Thêm mới Danh mục </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tenDanhMuc)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenDanhMuc)
+            </td>
+           
+              <td class ="btn-group">
+
+                    <a class="btn btn-secondary" asp-action="Edit" asp-controller="DanhMucAdmin" asp-route-id="@item.maDanhMuc">Edit</a> 
+                    <a class="btn btn-secondary" asp-action="Details" asp-controller="DanhMucAdmin" asp-route-id="@item.maDanhMuc">Details</a> 
+                    <a class="btn btn-secondary" asp-action="Delete" asp-controller="DanhMucAdmin" asp-route-id="@item.maDanhMuc">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+    </table>
