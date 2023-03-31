@@ -26,8 +26,8 @@ namespace ShopBanHangHS.Areas.Admin.Models
         [Display(Name = "Mô Tả")]
         [Required(ErrorMessage = "Xin Nhập Vào Mô Tả")]
         public string moTa { get; set; }
-        [Display(Name = "Danh Mục")]
-        public ICollection<DanhMuc> danhmuc { get; set; }
+     //   [Display(Name = "Danh Mục")]
+       // public ICollection<DanhMuc> danhmuc { get; set; }
 
     }
 }
