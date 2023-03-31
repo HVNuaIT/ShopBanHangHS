@@ -50,15 +50,16 @@ namespace ShopBanHangHS.Controllers
             {
                 if (check.xacThucEmail == true)
                 {
-                    kiemtra.Add(check);
+                    
                    
-                    if (check.quyen == true)
+                    if(check.quyen == true)
                     {
                         kiemtra.Add(check);
-                      
+                        HttpContext.Session.Set("Tk", kiemtra);
                         return Redirect("/Admin/HomeAdmin/Index");
                        
                     }
+                    kiemtra.Add(check);
                     HttpContext.Session.Set("Tk", kiemtra);
                    HttpContext.Session.SetString("Ten",kiemtra.FirstOrDefault().ten);
                     return RedirectToAction("Index", "Home");

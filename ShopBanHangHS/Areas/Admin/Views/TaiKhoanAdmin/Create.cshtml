@@ -1,0 +1,69 @@
+﻿@model ShopBanHangHS.Areas.Admin.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form href="Admin/TaiKhoanAdmin/Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ten" class="control-label"></label>
+                <input asp-for="ten" class="form-control" />
+                <span asp-validation-for="ten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="matKhau" class="control-label"></label>
+                <input asp-for="matKhau" class="form-control" />
+                <span asp-validation-for="matKhau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="quyen" /> @Html.DisplayNameFor(model => model.quyen)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="diaChi" class="control-label"></label>
+                <input asp-for="diaChi" class="form-control" />
+                <span asp-validation-for="diaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soDT" class="control-label"></label>
+                <input asp-for="soDT" class="form-control" />
+                <span asp-validation-for="soDT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="xacThucEmail" /> @Html.DisplayNameFor(model => model.xacThucEmail)
+                    </label>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="/Admin/TaiKhoanAdmin">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

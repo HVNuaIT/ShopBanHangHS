@@ -1,0 +1,85 @@
+﻿@model ShopBanHangHS.Areas.Admin.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.maTaiKhoan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.maTaiKhoan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKhach)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenKhach)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayMuaHang)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ngayMuaHang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ghiChu)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ghiChu)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.diaChi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.diaChi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trangThai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.maSanPham)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.maSanPham)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.thanhTien)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.thanhTien)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.soluong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.soluong)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-controller="HoaDonAdmin" asp-route-id="@Model.maHoaDon">Edit</a> |
+    <a href="/Admin/HoaDonAdmin/Index">Back to List</a>
+</div>

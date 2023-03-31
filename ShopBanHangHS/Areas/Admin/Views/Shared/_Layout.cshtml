@@ -22,12 +22,20 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="~/Admin/DanhMucAdmin">QL Danh Mục</a>
-                         
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="~/Admin/SanPhamAdmin">QL Sản Phẩm</a>
+                        
+                        <li>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger">Danh Sách Quản Lí </button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Quản Lí </span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/Admin/DanhMucAdmin">Quản Lí Danh Mục</a>
+                                    <a class="dropdown-item" href="/Admin/SanPhamAdmin">Quản Lí Sản Phẩm Admin</a>
+                                    <a class="dropdown-item" href="/Admin/HoaDonAdmin">Quản Lí Đơn Hàng</a>
+                                    <a class="dropdown-item" href="/Admin/TaiKhoanAdmin">Quản Lí User</a>
+                            </div>
+                        </div>
                         </li>
                     </ul>
                 </div>

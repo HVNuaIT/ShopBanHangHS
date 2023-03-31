@@ -1,21 +1,24 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ShopBanHangHS.Areas.Admin.Data;
 using ShopBanHangHS.Areas.Admin.Models;
-using ShopBanHangHS.Help;
-using System.Collections.Generic;
+using ShopBanHangHS.Data;
+using BCryptNet = BCrypt.Net.BCrypt;
+using System;
 using System.Linq;
+using System.Collections.Generic;
+using ShopBanHangHS.Help;
 
 namespace ShopBanHangHS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class SanPhamAdminController : Controller
+    public class TaiKhoanAdminController : Controller
     {
-        private readonly DBContextAdmin db; 
-        public SanPhamAdminController(DBContextAdmin _db)
-        {
+        private readonly DBContextAdmin db;
 
+        public TaiKhoanAdminController(DBContextAdmin _db)
+        {
             db = _db;
         }
         public List<User> Userss
@@ -41,7 +44,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             }
             else
             {
-                var check = db.SanPhams.ToList();
+                var check = db.Users.ToList();
                 return View(check);
             }
         }
@@ -58,9 +61,8 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
                 return View();
             }
         }
-
         [HttpPost]
-        public IActionResult Create(SanPham dm)
+        public IActionResult Create(User us)
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
@@ -70,15 +72,21 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             }
             else
             {
-                var ds = db.DanhMucs.ToList();
-                ViewBag.ds = ds;
-
-
-                db.Attach(dm);
-                db.SanPhams.Add(dm);
+                User user = new User();
+                user.ten = us.ten;
+                user.Email = us.Email;
+                user.matKhau = us.matKhau;
+                user.matKhau = BCryptNet.HashPassword(user.matKhau);
+                user.diaChi = us.diaChi;
+                user.soDT = us.soDT;
+                user.quyen = us.quyen;
+                user.ActivationCode = Guid.NewGuid();
+                user.xacThucEmail = us.xacThucEmail;
+                db.Users.Add(user);
                 db.SaveChanges();
-                return Redirect("/Admin/SanPhamAdmin/Index");
+                return Redirect("/Admin/TaiKhoanAdmin/Index");
             }
+
         }
         [Route("Admin/[controller]/[action]")]
         public IActionResult Delete(int id)
@@ -91,16 +99,14 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             }
             else
             {
-                var check = db.SanPhams.Where(x => x.maSanPham == id).FirstOrDefault();
+                var check = db.Users.Where(x => x.maTaiKhoan == id).FirstOrDefault();
                 return View(check);
             }
         }
         [Route("Admin/[controller]/[action]")]
         [HttpPost]
-        public IActionResult Delete(SanPham bietThu, int id)
+        public IActionResult Delete(User bietThu, int id)
         {
-            // db.Attach(bietThu);
-            // db.Entry(id).State = EntityState.Deleted;
             var use = Userss;
             var checkUs = use.FirstOrDefault();
             if (checkUs == null)
@@ -109,14 +115,14 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             }
             else
             {
-                var check = db.SanPhams.SingleOrDefault(s => s.maSanPham == id);
-                db.SanPhams.Remove(check);
+                var check = db.Users.SingleOrDefault(s => s.maTaiKhoan == id);
+                db.Users.Remove(check);
                 db.SaveChanges();
-                return Redirect("/Admin/SanPhamAdmin/Index");
+                return Redirect("/Admin/TaiKhoanAdmin/Index");
             }
         }
-        [Route("Admin/[controller]/[action]")]
-        public ActionResult Details(int id)
+
+        public IActionResult Edit(int id)
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
@@ -126,32 +132,13 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             }
             else
             {
-                var check = db.SanPhams.SingleOrDefault(s => s.maSanPham == id);
-
+                var check = db.Users.Where(x => x.maTaiKhoan == id).FirstOrDefault();
                 return View(check);
             }
         }
         [Route("Admin/[controller]/[action]")]
-        public ActionResult Edit(int id)
-        {
-            var use = Userss;
-            var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
-            {
-                return Redirect("/Login/Index");
-            }
-            else
-            {
-                var objds = db.SanPhams.Where(x => x.maSanPham == id).FirstOrDefault();
-                return View(objds);
-            }
-
-        }
-        // POST: SanPhamAdminController/Edit/5
-        [Route("Admin/[controller]/[action]")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, SanPham sanPham, IFormCollection collection)
+        public IActionResult Edit(User tk)
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
@@ -161,13 +148,27 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             }
             else
             {
-                db.Entry(sanPham).State = EntityState.Modified;
+                db.Entry(tk).State = EntityState.Modified;
                 db.SaveChanges();
-
-                return Redirect("/Admin/SanPhamAdmin/Index");
+                return Redirect("/Admin/TaiKhoanAdmin/Index");
             }
-             
-            
+        }
+        [Route("Admin/[controller]/[action]")]
+        public IActionResult Detail(int id)
+        {
+            var use = Userss;
+            var checkUs = use.FirstOrDefault();
+            if (checkUs == null)
+            {
+                return Redirect("/Login/Index");
+            }
+            else
+            {
+                var check = db.Users.FirstOrDefault(s => s.maTaiKhoan == id);
+                return View(check);
+            }
         }
     }
 }
+
+    

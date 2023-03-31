@@ -61,7 +61,13 @@ namespace ShopBanHangHS.Controllers
         }
         public IActionResult Index()
         {
-                return View(Carts); 
+            var use = Userss;
+            var checkUs = use.FirstOrDefault();
+            if(checkUs == null)
+            {
+                return Redirect("/Login/Index");
+            }
+            return View(Carts); 
         }
         [HttpPost]
         public IActionResult COD( string address,string note)

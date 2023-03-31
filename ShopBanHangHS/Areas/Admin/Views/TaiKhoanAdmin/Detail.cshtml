@@ -1,0 +1,67 @@
+﻿@model ShopBanHangHS.Areas.Admin.Models.User
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.matKhau)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.matKhau)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.quyen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.quyen)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.diaChi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.diaChi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.soDT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.soDT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.xacThucEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.xacThucEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivationCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActivationCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-controller="TaiKhoanAdmin" asp-route-id="@Model.maTaiKhoan">Edit</a> |
+    <a href="/Admin/TaiKhoanAdmin/Index">Back to List</a>
+</div>

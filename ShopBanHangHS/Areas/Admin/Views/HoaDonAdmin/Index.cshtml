@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ShopBanHangHS.Areas.Admin.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:green">Quản Lý Đơn Hàng</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.maTaiKhoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenKhach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngayMuaHang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ghiChu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoDienThoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maSanPham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thanhTien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soluong)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maTaiKhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKhach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayMuaHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ghiChu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thanhTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soluong)
+            </td>
+            <td class="btn-group">
+                    <a class="btn btn-secondary" asp-action="Edit" asp-controller="HoaDonAdmin" asp-route-id="@item.maHoaDon">Edit</a> |
+                    <a class="btn btn-secondary" asp-action="Details" asp-controller="HoaDonAdmin" asp-route-id="@item.maHoaDon">Details</a> |
+                    <a class="btn btn-secondary" asp-action="Delete" asp-controller="HoaDonAdmin" asp-route-id="@item.maHoaDon">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
