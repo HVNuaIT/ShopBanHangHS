@@ -10,7 +10,7 @@ using ShopBanHangHS.Data;
 namespace ShopBanHangHS.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20230328140806_DBFIST")]
+    [Migration("20230403203344_DBFIST")]
     partial class DBFIST
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,7 @@ namespace ShopBanHangHS.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("ShopBanHangHS.Models.DanhMuc", b =>
                 {
@@ -112,7 +112,7 @@ namespace ShopBanHangHS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("danhmucmaDanhMuc")
+                    b.Property<int>("danhmuc")
                         .HasColumnType("int");
 
                     b.Property<string>("moTa")
@@ -128,8 +128,6 @@ namespace ShopBanHangHS.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("maSanPham");
-
-                    b.HasIndex("danhmucmaDanhMuc");
 
                     b.ToTable("SanPham");
                 });
@@ -174,15 +172,6 @@ namespace ShopBanHangHS.Migrations
                     b.HasKey("maTaiKhoan");
 
                     b.ToTable("TaiKhoan");
-                });
-
-            modelBuilder.Entity("ShopBanHangHS.Models.SanPham", b =>
-                {
-                    b.HasOne("ShopBanHangHS.Models.DanhMuc", "danhmuc")
-                        .WithMany()
-                        .HasForeignKey("danhmucmaDanhMuc");
-
-                    b.Navigation("danhmuc");
                 });
 #pragma warning restore 612, 618
         }

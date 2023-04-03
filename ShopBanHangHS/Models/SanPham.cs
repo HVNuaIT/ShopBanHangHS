@@ -11,7 +11,7 @@ namespace ShopBanHangHS.Models
         public int maSanPham { get; set; }
         [Required(ErrorMessage ="Xin Nhập Vào Tên Sản Phẩm")]
         public string tenSanPham { get; set; }
-        public DanhMuc danhmuc { get; set; }
+        public int danhmuc { get; set; }
         [Required(ErrorMessage = "Xin Nhập Vào Gía")]
         public double? Gia {  get; set; }
         [Required(ErrorMessage = "Xin Nhập Vào Số Lượng")]

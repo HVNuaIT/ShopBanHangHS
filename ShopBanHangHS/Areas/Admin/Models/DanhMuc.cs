@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopBanHangHS.Areas.Admin.Models
@@ -11,6 +12,6 @@ namespace ShopBanHangHS.Areas.Admin.Models
         [Required(ErrorMessage ="Xin Nhập Vào Tên Danh Mục ")]
         [Display(Name = "Tên Danh Mục")]
         public string tenDanhMuc { get; set; }
-   
+      
     }
 }

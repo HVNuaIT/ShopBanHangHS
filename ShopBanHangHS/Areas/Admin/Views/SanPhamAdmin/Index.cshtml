@@ -29,6 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.moTa)
             </th>
+             <th>
+                @Html.DisplayNameFor(model => model.danhmuc)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -47,12 +50,12 @@
             <td>
               <img src="@item.HinhAnh" height="100" width="100">
             </td>
-                <td>
-                 
-                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.moTa)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.danhmuc)
+                </td>
             <td class="btn btn-group">
                     <a asp-action="Edit" class="btn btn-secondary" asp-controller="SanPhamAdmin" asp-route-id="@item.maSanPham">Edit</a> |
                     <a asp-action="Details" class="btn btn-secondary" asp-controller="SanPhamAdmin" asp-route-id="@item.maSanPham">Details</a> |

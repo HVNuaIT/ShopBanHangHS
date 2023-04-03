@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShopBanHangHS.Areas.Admin.Data;
 using ShopBanHangHS.Areas.Admin.Models;
@@ -45,22 +46,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
                 return View(check);
             }
         }
-        public IActionResult Create()
-        {
-            var use = Userss;
-            var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
-            {
-                return Redirect("/Login/Index");
-            }
-            else
-            {
-                return View();
-            }
-        }
-
-        [HttpPost]
-        public IActionResult Create(SanPham dm)
+        public IActionResult Create(int maDanhMuc)
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
@@ -71,11 +57,31 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             else
             {
                 var ds = db.DanhMucs.ToList();
-                ViewBag.ds = ds;
+                  ViewBag.ds = new SelectList(ds, "maDanhMuc", "TenDanhMuc", maDanhMuc);
+            
+                return View();
+            }
+        }
 
-
-                db.Attach(dm);
-                db.SanPhams.Add(dm);
+        [HttpPost]
+        public IActionResult Create(SanPham dm,int maDanhMuc)
+        {
+            var use = Userss;
+            var checkUs = use.FirstOrDefault();
+            if (checkUs == null)
+            {
+                return Redirect("/Login/Index");
+            }
+            else
+            {
+                SanPham sp = new SanPham();
+                sp.tenSanPham = dm.tenSanPham;
+                sp.moTa = dm.moTa;
+               sp.danhmuc = maDanhMuc;
+                sp.Gia = dm.Gia;
+                sp.soLuong= dm.soLuong;
+                sp.HinhAnh= dm.HinhAnh;
+                db.SanPhams.Add(sp);
                 db.SaveChanges();
                 return Redirect("/Admin/SanPhamAdmin/Index");
             }
