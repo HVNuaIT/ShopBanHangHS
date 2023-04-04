@@ -30,7 +30,7 @@
                 @Html.DisplayNameFor(model => model.moTa)
             </th>
              <th>
-                @Html.DisplayNameFor(model => model.danhmuc)
+                @Html.DisplayNameFor(model => model.maLoai)
             </th>
             <th></th>
         </tr>
@@ -54,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.moTa)
             </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.danhmuc)
+                    @Html.DisplayFor(modelItem => item.maLoai)
                 </td>
             <td class="btn btn-group">
                     <a asp-action="Edit" class="btn btn-secondary" asp-controller="SanPhamAdmin" asp-route-id="@item.maSanPham">Edit</a> |

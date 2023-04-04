@@ -36,7 +36,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
@@ -46,18 +46,18 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
                 return View(check);
             }
         }
-        public IActionResult Create(int maDanhMuc)
+        public IActionResult Create()
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
             else
             {
-                var ds = db.DanhMucs.ToList();
-                  ViewBag.ds = new SelectList(ds, "maDanhMuc", "TenDanhMuc", maDanhMuc);
+               
+                  ViewBag.maLoai = new SelectList(db.DanhMucs.ToList(), "maDanhMuc", "tenDanhMuc");
             
                 return View();
             }
@@ -68,20 +68,21 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
             else
             {
+                /*
                 SanPham sp = new SanPham();
                 sp.tenSanPham = dm.tenSanPham;
                 sp.moTa = dm.moTa;
-               sp.danhmuc = maDanhMuc;
+               sp.maLoai = maDanhMuc;
                 sp.Gia = dm.Gia;
                 sp.soLuong= dm.soLuong;
-                sp.HinhAnh= dm.HinhAnh;
-                db.SanPhams.Add(sp);
+                sp.HinhAnh= dm.HinhAnh;*/
+                db.SanPhams.Add(dm);
                 db.SaveChanges();
                 return Redirect("/Admin/SanPhamAdmin/Index");
             }
@@ -91,7 +92,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
@@ -109,7 +110,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
             // db.Entry(id).State = EntityState.Deleted;
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
@@ -126,7 +127,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
@@ -142,7 +143,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }
@@ -161,7 +162,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false)
             {
                 return Redirect("/Login/Index");
             }

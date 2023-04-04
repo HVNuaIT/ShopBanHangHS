@@ -27,7 +27,9 @@ namespace ShopBanHangHS.Areas.Admin.Models
         [Required(ErrorMessage = "Xin Nhập Vào Mô Tả")]
         public string moTa { get; set; }
         [Display(Name = "Danh Mục")]
-        public int danhmuc { get; set; }
+        public int? maLoai { get; set; }
+        [ForeignKey("maLoai")]
+        public DanhMuc danhMuc { get; set; }
 
     }
 }

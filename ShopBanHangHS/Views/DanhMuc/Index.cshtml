@@ -1,0 +1,55 @@
+﻿@model ShopBanHangHS.Models.DanhSach
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+
+            <p>Tất Cả Các Sản Phẩm Theo Danh Muc </p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12">
+                <ul id="portfolio-flters">
+                    <li data-filter="*" class="filter-active">All</li>
+                   
+
+                </ul>
+            </div>
+        </div>
+
+        @foreach (var item in Model.dsSanPham)
+        {
+            <div class="col-lg-4 col-md-6 portfolio-item filter-active">
+                @*Danh Sách Biệt Thự *@
+                <div class="portfolio-wrap">
+                    <img src="@item.HinhAnh" class="img-fluid" alt="">
+                    <div class="portfolio-links">
+                        @*Cần Đưa Ra Địa Chỉ Vật Lý để thay đổi hình ảnh của data-gallery*@
+                        <a href="@Url.ActionLink("Index", "GioHang", new { Id = @item.maSanPham })" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.tenSanPham"><i class="bi bi-plus"></i></a>
+                        <a href="@Url.ActionLink("ChiTietSanPham", "ChiTiet", new { Id = @item.maSanPham })" title="More Details"><i class="bi bi-link"></i></a>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                            </svg> @item.tenSanPham
+                        </h4>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
+                            </svg>  @item.Gia VND
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</section>
+<section id="portfolio" class="portfolio">

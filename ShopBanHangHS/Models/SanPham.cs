@@ -11,7 +11,6 @@ namespace ShopBanHangHS.Models
         public int maSanPham { get; set; }
         [Required(ErrorMessage ="Xin Nhập Vào Tên Sản Phẩm")]
         public string tenSanPham { get; set; }
-        public int danhmuc { get; set; }
         [Required(ErrorMessage = "Xin Nhập Vào Gía")]
         public double? Gia {  get; set; }
         [Required(ErrorMessage = "Xin Nhập Vào Số Lượng")]
@@ -19,8 +18,10 @@ namespace ShopBanHangHS.Models
         [Required(ErrorMessage = "Xin Nhập Vào Hinh Ảnh")]
         public string HinhAnh { get; set; }
         [Required(ErrorMessage = "Xin Nhập Vào Mô Tả")]
-        public string moTa { get; set; }
-    
+        public string moTa { get; set; }      
+        public int? maLoai { get; set; }
+        [ForeignKey("maLoai")]
+        public DanhMuc danhMuc { get; set; }
 
     }
 }

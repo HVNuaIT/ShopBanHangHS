@@ -13,5 +13,6 @@ namespace ShopBanHangHS.Areas.Admin.Models
         [Display(Name = "Tên Danh Mục")]
         public string tenDanhMuc { get; set; }
       
+        public ICollection<SanPham> SanPhams { get; set; }
     }
 }

@@ -46,30 +46,23 @@ namespace ShopBanHangHS.Controllers
             var checkUs = kiemtra.SingleOrDefault(p => p.maTaiKhoan == user.maTaiKhoan);
             var check = db.Users.SingleOrDefault(s => s.Email == user.Email);
           
-            if (check != null || !BCryptNet.Verify(user.matKhau, check.matKhau))
+            if (check != null || !BCryptNet.Verify(user.matKhau, check.matKhau)&& check.xacThucEmail == true)
             {
-                if (check.xacThucEmail == true)
-                {
-                    
+                
                    
-                    if(check.quyen == true)
-                    {
-                        kiemtra.Add(check);
-                        HttpContext.Session.Set("Tk", kiemtra);
-                        return Redirect("/Admin/HomeAdmin/Index");
-                       
-                    }
                     kiemtra.Add(check);
                     HttpContext.Session.Set("Tk", kiemtra);
-                   HttpContext.Session.SetString("Ten",kiemtra.FirstOrDefault().ten);
+                    HttpContext.Session.SetString("Ten",kiemtra.FirstOrDefault().ten);
                     return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    return View("Loi");
-                } 
+                    
+                
+                
             }
-            return View();
+            else
+            {
+                return View("Loi");
+            }
+            
         }
 
         public IActionResult DangKi()

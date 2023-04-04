@@ -8,44 +8,33 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-
         <nav id="navbar" class="navbar">
-            <ul>
-             
+            <ul>          
                 <li class="dropdown">
                     <a href="#"><span>Danh Mục</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         @foreach (var item in Model.dsDanhMuc){
                             <li class="dropdown">
-                                <a href="#"><span>@item.tenDanhMuc</span> <i class="bi bi-chevron-right"></i></a>
+                                <a href="@Url.ActionLink("Index","DanhMuc",new{ id =@item.maDanhMuc})"><span>@item.tenDanhMuc</span> <i class="bi bi-chevron-right"></i></a>
 
                             </li>
-                        }
-
-                       
+                        }   
                     </ul>
                 </li>
-            
-
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
-
-
 <div class="container">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="~/contentuser/assets/img/slider-8723.png" alt="First slide" width="1920" height="300">
+                <img class="d-block w-100" src="~/contentuser/assets/img/ao4.jpg" alt="First slide" width="1920" height="300">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="~/contentuser/assets/img/sua-nha-tron-goi-hung-gia-phat-8970.jpg" alt="Second slide" width="1920" height="300">
+                <img class="d-block w-100" src="~/contentuser/assets/img/ao1.jpg" alt="Second slide" width="1920" height="300">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="~/contentuser/assets/img/xay-nha-tron-goi-hung-gia-phat-4040.jpg" alt="Third slide" width="1920" height="300">
+                <img class="d-block w-100" src="~/contentuser/assets/img/ao2.jpg" alt="Third slide" width="1920" height="300">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -65,16 +54,16 @@
                 <img src="~/contentuser/assets/img/team/R.jpg" class="img-fluid" alt="" data-aos="zoom-in">
             </div>
             <div class="col-lg-6 pt-5 pt-lg-0">
-                <h3 data-aos="fade-up">Giới Thiệu Tâm Hồng Phát</h3>
+                <h3 data-aos="fade-up">Shop Bán Quần Áo</h3>
                 <p data-aos="fade-up" data-aos-delay="100">
-                    CÔNG TY TNHH THIẾT KẾ XÂY DỰNG VÀ CƠ KHÍ TÂM HỒNG PHÁT chuyên dịch vụ  thiết kế, thi công, giám sát công trình như: Biệt thư, nhà phố, căn hộ, shop, Nhà xưởng công nghiệp – lắp ghép, Sản xuất lắp đặt nội thất và sản xuất sản phẩm cơ khí xây dựng, cửa, lan can, hàng rào nhôm đúc, cửa nhôm kính.
-                    Với đội ngũ nhân viên giàu kinh nghiệm, các sản phẩm đạt chất lượng, dịch vụ thi công xây dựng cạnh tranh,Tâm Hồng Phát luôn mang lại dịch vụ tốt nhất cho khách hàng. Hãy liên hệ ngay với chúng tôi để được tư vấn.
+                    Shop chuyên cung cấp quần áo cao cấp đến từ nhiều thương hiệu nổi tiến và có nhiêu loại cho khách hàng tùy ý lựa chọn,
+                    hãy liên hệ đặt mua ngay cho mình một bộ tời trang thật nổi bật nhé !!!
                 </p>
                 <div class="row">
                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <i class="bx bx-receipt"></i>
                         <h4>Liên Hệ Qua Zalo</h4>
-                        <a href="https://zalo.me/0948262748" class="button">
+                        <a href="https://zalo.me/0349889594" class="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
                             </svg> Liên Hệ Ngay
@@ -156,18 +145,12 @@
             <div class="col-lg-12">
                 <ul id="portfolio-flters">
                     <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-app">Biệt Thự </li>
-                    <li data-filter=".filter-card">Nhà Nguyên Căn</li>
-                    <li data-filter=".filter-web">Cơ Khí</li>
-                    <li data-filter=".filter-Nhaxuong">Nhà Xưởng</li>
-                    <li data-filter=".filter-nhapho">Nhà Phố</li>
                 </ul>
             </div>
-        </div>
-     
+        </div>    
         @foreach (var item in Model.dsSanPham)
         {
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-active">
                 @*Danh Sách Biệt Thự *@
                 <div class="portfolio-wrap">
                     <img src="@item.HinhAnh" class="img-fluid" alt="">
@@ -190,7 +173,6 @@
                     </div>
                 </div>
             </div>
-            
         }
         
         </div>

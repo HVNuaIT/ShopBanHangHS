@@ -57,24 +57,6 @@ namespace ShopBanHangHS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SanPham",
-                columns: table => new
-                {
-                    maSanPham = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    tenSanPham = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    danhmuc = table.Column<int>(type: "int", nullable: false),
-                    Gia = table.Column<double>(type: "float", nullable: false),
-                    soLuong = table.Column<int>(type: "int", nullable: false),
-                    HinhAnh = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    moTa = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SanPham", x => x.maSanPham);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TaiKhoan",
                 columns: table => new
                 {
@@ -93,13 +75,39 @@ namespace ShopBanHangHS.Migrations
                 {
                     table.PrimaryKey("PK_TaiKhoan", x => x.maTaiKhoan);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "SanPham",
+                columns: table => new
+                {
+                    maSanPham = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    tenSanPham = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Gia = table.Column<double>(type: "float", nullable: false),
+                    soLuong = table.Column<int>(type: "int", nullable: false),
+                    HinhAnh = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    moTa = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    maLoai = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SanPham", x => x.maSanPham);
+                    table.ForeignKey(
+                        name: "FK_SanPham_DanhMuc_maLoai",
+                        column: x => x.maLoai,
+                        principalTable: "DanhMuc",
+                        principalColumn: "maDanhMuc",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SanPham_maLoai",
+                table: "SanPham",
+                column: "maLoai");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "DanhMuc");
-
             migrationBuilder.DropTable(
                 name: "DatHang");
 
@@ -111,6 +119,9 @@ namespace ShopBanHangHS.Migrations
 
             migrationBuilder.DropTable(
                 name: "TaiKhoan");
+
+            migrationBuilder.DropTable(
+                name: "DanhMuc");
         }
     }
 }

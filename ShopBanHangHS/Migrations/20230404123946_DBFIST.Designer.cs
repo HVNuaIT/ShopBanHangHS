@@ -10,7 +10,7 @@ using ShopBanHangHS.Data;
 namespace ShopBanHangHS.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20230403203344_DBFIST")]
+    [Migration("20230404123946_DBFIST")]
     partial class DBFIST
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,7 +112,7 @@ namespace ShopBanHangHS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("danhmuc")
+                    b.Property<int?>("maLoai")
                         .HasColumnType("int");
 
                     b.Property<string>("moTa")
@@ -128,6 +128,8 @@ namespace ShopBanHangHS.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("maSanPham");
+
+                    b.HasIndex("maLoai");
 
                     b.ToTable("SanPham");
                 });
@@ -172,6 +174,15 @@ namespace ShopBanHangHS.Migrations
                     b.HasKey("maTaiKhoan");
 
                     b.ToTable("TaiKhoan");
+                });
+
+            modelBuilder.Entity("ShopBanHangHS.Models.SanPham", b =>
+                {
+                    b.HasOne("ShopBanHangHS.Models.DanhMuc", "danhMuc")
+                        .WithMany()
+                        .HasForeignKey("maLoai");
+
+                    b.Navigation("danhMuc");
                 });
 #pragma warning restore 612, 618
         }

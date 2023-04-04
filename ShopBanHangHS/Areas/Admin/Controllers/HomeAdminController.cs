@@ -26,7 +26,7 @@ namespace ShopBanHangHS.Areas.Admin.Controllers
         {
             var use = Userss;
             var checkUs = use.FirstOrDefault();
-            if (checkUs == null)
+            if (checkUs.quyen == false )
             {
                 return Redirect("/Login/Index");
             }
