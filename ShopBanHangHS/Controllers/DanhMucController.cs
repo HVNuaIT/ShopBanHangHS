@@ -21,9 +21,5 @@ namespace ShopBanHangHS.Controllers
             ds.dsSanPham = check;
             return View(ds);
         }
-                
-                
-               
-       
     }
 }
