@@ -3,4 +3,33 @@
 *@
 @{
 }
-<h1>Trang Admin</h1>
+
+
+    <div class="container">
+        <h2 style="text-align:center">Tổng Chi Tiết</h2>
+      
+        <div class="card-columns">
+            <div class="card bg-primary">
+                <div class="card-body text-center">
+                    <h1>Số Lượng Sản Phẩm</h1>
+                    <p class="card-text">@ViewBag.sp</p>
+                </div>
+            </div>
+            
+            <div class="card bg-success">
+                <div class="card-body text-center">
+                    <h1>Số Lượng Đơn Đặt Hàng</h1>
+                    <p class="card-text">@ViewBag.donhang</p>
+                </div>
+            </div>
+           
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h1>Số Lượng Tài Khoản</h1>
+                    <p class="card-text">@ViewBag.Us</p>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
