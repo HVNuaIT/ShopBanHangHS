@@ -46,7 +46,7 @@ namespace ShopBanHangHS.Controllers
             var checkUs = kiemtra.SingleOrDefault(p => p.maTaiKhoan == user.maTaiKhoan);
             var check = db.Users.SingleOrDefault(s => s.Email == user.Email);
           
-            if (check != null || !BCryptNet.Verify(user.matKhau, check.matKhau)&& check.xacThucEmail == true)
+            if (check != null || BCryptNet.Verify(user.matKhau, check.matKhau)&& check.xacThucEmail == true)
             {
                 
                    

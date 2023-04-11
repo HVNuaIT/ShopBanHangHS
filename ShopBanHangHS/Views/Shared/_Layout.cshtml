@@ -53,6 +53,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="~/Home/Index">Trang Chủ</a></li>
+                
                     @{
                         var user = Context.Session.Get<List<User>>("Tk");
                         if (user == null)

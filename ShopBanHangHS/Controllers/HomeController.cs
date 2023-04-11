@@ -29,7 +29,8 @@ namespace ShopBanHangHS.Controllers
             var checkdanhmuc = db.DanhMucs.ToList();
             DanhSach ds  = new DanhSach();
             ds.dsSanPham = checkSanPham;
-       ds.dsDanhMuc= checkdanhmuc;
+            ds.dsDanhMuc = checkdanhmuc;
+            ViewBag.dm = checkdanhmuc;
             return View(ds);
         }
 
